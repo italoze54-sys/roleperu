@@ -1,0 +1,125 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 6px);
+  --radius-2xl: calc(var(--radius) + 14px);
+  --radius-3xl: calc(var(--radius) + 24px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-cream: var(--cream);
+  --color-sand: var(--sand);
+  --color-cocoa: var(--cocoa);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-script: "Dancing Script", cursive;
+  --font-sans: "Jost", ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-soft: 0 18px 40px -24px color-mix(in oklab, var(--cocoa) 45%, transparent);
+  --shadow-lift: 0 28px 60px -28px color-mix(in oklab, var(--cocoa) 55%, transparent);
+}
+
+:root {
+  --radius: 0.75rem;
+  --background: oklch(0.972 0.012 85);
+  --foreground: oklch(0.29 0.045 55);
+  --card: oklch(0.99 0.006 90);
+  --card-foreground: oklch(0.29 0.045 55);
+  --primary: oklch(0.34 0.055 52);
+  --primary-foreground: oklch(0.975 0.012 88);
+  --secondary: oklch(0.92 0.024 80);
+  --secondary-foreground: oklch(0.34 0.055 52);
+  --muted: oklch(0.945 0.017 84);
+  --muted-foreground: oklch(0.52 0.032 62);
+  --accent: oklch(0.72 0.072 62);
+  --accent-foreground: oklch(0.26 0.045 52);
+  --cream: oklch(0.965 0.015 86);
+  --sand: oklch(0.898 0.03 78);
+  --cocoa: oklch(0.32 0.05 52);
+  --border: oklch(0.88 0.022 80);
+  --ring: oklch(0.62 0.06 60);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 3px;
+  }
+}
+
+@utility font-script {
+  font-family: var(--font-script);
+}
+
+@utility surface-grain {
+  background-image: radial-gradient(
+      circle at 15% 20%,
+      color-mix(in oklab, var(--sand) 55%, transparent),
+      transparent 45%
+    ),
+    radial-gradient(circle at 85% 10%, color-mix(in oklab, var(--sand) 45%, transparent), transparent 40%);
+}
+
+@utility reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: reveal-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes reveal-up {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
