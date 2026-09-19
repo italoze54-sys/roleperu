@@ -2,7 +2,6 @@ import avellana from "@/assets/avellana.jpg";
 import frutosRojos from "@/assets/frutosrojos.jpg";
 import kitkat from "@/assets/kitkat.jpg";
 import maracuya from "@/assets/maracuya.jpg";
-import surtido from "@/assets/surtido.jpeg.asset.json";
 import limeña from "@/assets/limeña.jpg";
 import tresLeches from "@/assets/tresleches.jpg";
 
